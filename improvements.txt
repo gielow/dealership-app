@@ -1,0 +1,5 @@
+1. A generic CSV parser could be implemented. General idea
+*	Each attribute/property in the model class could have a data notation similar to:
+	[CsvParser(ColumnName="Price", Type=typeof(decimal)]
+	public decimal Price { get; set; }
+*	Customs parse would be a case apart but for most of it would be supported

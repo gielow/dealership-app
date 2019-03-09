@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\dealership.interfaces\dealership.interfaces.csproj" />
+    <ProjectReference Include="..\dealership.model\dealership.model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="dealertrack-example.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
