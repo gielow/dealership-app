@@ -8,24 +8,27 @@ using System.Linq;
 
 namespace dealership.data
 {
-    public class VehicleRepository : IVehiclesProvider
+    public class SalesRepository : ISalesProvider
     {
         private string FilePath { get; set; }
 
         public void SetFilePath(string filePath)
         {
+            if (string.IsNullOrEmpty(filePath))
+                throw new ArgumentNullException(nameof(filePath));
+
             if (!File.Exists(filePath))
                 throw new FileNotFoundException("File not found.", filePath);
 
             FilePath = filePath;
         }
 
-        public IEnumerable<Vehicle> GetAll()
+        public IEnumerable<Sale> GetAll()
         {
             if (string.IsNullOrEmpty(FilePath))
                 throw new Exception("File path not set");
 
-            var vehicles = new List<Vehicle>();
+            var sales = new List<Sale>();
 
             // Regex to support nested commas within column value
             Regex CSVParser = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
@@ -40,30 +43,32 @@ namespace dealership.data
                     var line = reader.ReadLine();
                     var values = CSVParser.Split(line);
 
-                    var vehicle = new Vehicle();
-                    vehicle.Id = Convert.ToInt32(values[0]);
-                    vehicle.CustomerName = values[1].ToString();
-                    vehicle.DealershipName = values[2];
+                    var sale = new Sale();
+                    sale.Id = Convert.ToInt32(values[0]);
+                    sale.CustomerName = values[1].ToString();
+                    sale.DealershipName = values[2];
+                    sale.Price = ParseUtils.ParseDecimalFromWithQuotes(values[4]);
+                    sale.Date = ParseUtils.ParseDateTimeFromWithQuotes(values[5]);
 
+                    var vehicle = new Vehicle();
                     // The following line is consisted of "0000 string"
                     vehicle.Year = int.Parse(values[3].Substring(0, 4)); // Parse the first 4 digits as year
                     vehicle.Model = values[3].Substring(5); // Copy the rest as plain text
 
-                    vehicle.Price = ParseUtils.ParseDecimalFromWithQuotes(values[4]);
-                    vehicle.Date = ParseUtils.ParseDateTimeFromWithQuotes(values[5]);
+                    sale.Vehicle = vehicle;
 
-                    vehicles.Add(vehicle);
+                    sales.Add(sale);
                 }
             }
 
-            return vehicles;
+            return sales;
         }
         
-        public Vehicle GetById(int id)
+        public Sale GetById(int id)
         {
-            var vehicles = GetAll();
+            var sales = GetAll();
 
-            return vehicles.FirstOrDefault(v => v.Id == id);
+            return sales.FirstOrDefault(v => v.Id == id);
         }
     }
 }

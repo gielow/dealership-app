@@ -21,4 +21,10 @@
     <ProjectReference Include="..\dealership.model\dealership.model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="sales-example.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

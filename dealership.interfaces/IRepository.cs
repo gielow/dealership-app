@@ -6,6 +6,6 @@ namespace dealership.interfaces
 {
     public interface IRepository
     {
-        IVehiclesProvider GetVehiclesProvider();
+        ISalesProvider GetVehiclesProvider();
     }
 }

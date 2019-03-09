@@ -31,11 +31,11 @@ namespace dealership_mvc
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            var vehiclesCsvPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"dealertrack-example.csv"); ;
-            var vehicleRepository = new VehicleRepository();
-            vehicleRepository.SetFilePath(vehiclesCsvPath);
+            var salesCsvPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"sales-example.csv"); ;
+            var salesRepository = new SalesRepository();
+            salesRepository.SetFilePath(salesCsvPath);
 
-            services.AddSingleton<IVehiclesProvider>(vehicleRepository);
+            services.AddSingleton<ISalesProvider>(salesRepository);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

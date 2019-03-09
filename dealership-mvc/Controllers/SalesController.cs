@@ -7,40 +7,40 @@ namespace dealership_mvc.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DealsController : ControllerBase
+    public class SalesController : ControllerBase
     {
-        private IVehiclesProvider _repository;
-        public DealsController(IVehiclesProvider provider)
+        private ISalesProvider _repository;
+        public SalesController(ISalesProvider provider)
         {
             _repository = provider;
         }
-        // GET api/values
+        // GET api/sales
         [HttpGet]
-        public IEnumerable<Vehicle> Get()
+        public IEnumerable<Sale> Get()
         {
             return _repository.GetAll();
         }
 
-        // GET api/values/5
+        // GET api/sales/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<Sale> Get(int id)
         {
-            return "value";
+            return _repository.GetById(id);
         }
 
-        // POST api/values
+        // POST api/sales
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Vehicle value)
         {
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] Vehicle value)
         {
         }
 
-        // DELETE api/values/5
+        // DELETE api/sales/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

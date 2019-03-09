@@ -5,7 +5,7 @@ using System.Text;
 
 namespace dealership.interfaces
 {
-    public interface IVehiclesProvider : IBaseProvider<Vehicle>
+    public interface ISalesProvider : IBaseProvider<Sale>
     {
 
     }

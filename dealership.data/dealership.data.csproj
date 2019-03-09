@@ -9,10 +9,4 @@
     <ProjectReference Include="..\dealership.model\dealership.model.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="dealertrack-example.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
