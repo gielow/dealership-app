@@ -1,3 +1,5 @@
+using dealership.data;
+using dealership.interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -5,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.IO;
+using System.Reflection;
 
 namespace dealership_angular
 {
@@ -27,6 +31,12 @@ namespace dealership_angular
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            var salesCsvPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"sales-example.csv"); ;
+            var salesRepository = new SalesRepository();
+            salesRepository.SetFilePath(salesCsvPath);
+
+            services.AddSingleton<ISalesProvider>(salesRepository);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

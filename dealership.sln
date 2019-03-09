@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28621.142
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dealership-mvc", "dealership-mvc\dealership-mvc.csproj", "{45800A05-18F3-43D7-AA75-6939C887EEC6}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dealership-angular", "dealership-angular\dealership-angular.csproj", "{6CBBAFB1-FCB7-48A6-AA48-945C1A647D4F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dealership.data", "dealership.data\dealership.data.csproj", "{5619F17F-369A-4F0D-B2E5-433FBA237D61}"
@@ -15,16 +13,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dealership.interfaces", "de
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dealership.model", "dealership.model\dealership.model.csproj", "{1F6483F9-3A3D-4333-95E7-D3C45E8689C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dealership.model.tests", "dealership.model.tests\dealership.model.tests.csproj", "{1AE18D04-A6D2-423B-8D16-4C8E657B89D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{45800A05-18F3-43D7-AA75-6939C887EEC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{45800A05-18F3-43D7-AA75-6939C887EEC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{45800A05-18F3-43D7-AA75-6939C887EEC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{45800A05-18F3-43D7-AA75-6939C887EEC6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6CBBAFB1-FCB7-48A6-AA48-945C1A647D4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6CBBAFB1-FCB7-48A6-AA48-945C1A647D4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CBBAFB1-FCB7-48A6-AA48-945C1A647D4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{1F6483F9-3A3D-4333-95E7-D3C45E8689C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F6483F9-3A3D-4333-95E7-D3C45E8689C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F6483F9-3A3D-4333-95E7-D3C45E8689C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AE18D04-A6D2-423B-8D16-4C8E657B89D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AE18D04-A6D2-423B-8D16-4C8E657B89D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AE18D04-A6D2-423B-8D16-4C8E657B89D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AE18D04-A6D2-423B-8D16-4C8E657B89D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

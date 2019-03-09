@@ -1,0 +1,26 @@
+<h1>Sales</h1>
+
+<p *ngIf="!sales"><em>Loading...</em></p>
+
+<table class='table' *ngIf="sales">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Customer</th>
+      <th>Dealership</th>
+      <th>Vehicle</th>
+      <th>Price</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let sale of sales">
+      <td>{{ sale.id }}</td>
+      <td>{{ sale.customerName }}</td>
+      <td>{{ sale.dealershipName }}</td>
+      <td>{{ sale.vehicle.description }}</td>
+      <td>CAD {{ sale.price | currency:'CAD':'symbol-narrow' }}</td>
+      <td>{{ sale.date | date: 'd/M/y' }}</td>
+    </tr>
+  </tbody>
+</table>

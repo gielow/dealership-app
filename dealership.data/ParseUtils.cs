@@ -21,5 +21,13 @@ namespace dealership.data
 
             return DateTime.Parse(value.Replace("\"", string.Empty));
         }
+
+        public static string RemoveOuterQuotesFromString(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return string.Empty;
+
+            return value.Trim('"');
+        }
     }
 }

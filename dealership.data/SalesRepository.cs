@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Linq;
+using System.Text;
 
 namespace dealership.data
 {
@@ -33,7 +34,7 @@ namespace dealership.data
             // Regex to support nested commas within column value
             Regex CSVParser = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
 
-            using (var reader = new StreamReader(FilePath))
+            using (var reader = new StreamReader(FilePath, Encoding.GetEncoding("iso-8859-1")))
             {
                 // Skip first line that only contains the columns names
                 reader.ReadLine();
@@ -45,15 +46,17 @@ namespace dealership.data
 
                     var sale = new Sale();
                     sale.Id = Convert.ToInt32(values[0]);
-                    sale.CustomerName = values[1].ToString();
-                    sale.DealershipName = values[2];
+                    sale.CustomerName = ParseUtils.RemoveOuterQuotesFromString(values[1].ToString());
+                    sale.DealershipName = ParseUtils.RemoveOuterQuotesFromString(values[2]);
                     sale.Price = ParseUtils.ParseDecimalFromWithQuotes(values[4]);
                     sale.Date = ParseUtils.ParseDateTimeFromWithQuotes(values[5]);
 
                     var vehicle = new Vehicle();
-                    // The following line is consisted of "0000 string"
+                    // Line composition: "2017 Ferrari 488 Spider"
                     vehicle.Year = int.Parse(values[3].Substring(0, 4)); // Parse the first 4 digits as year
-                    vehicle.Model = values[3].Substring(5); // Copy the rest as plain text
+                    var secondSpaceIndex = values[3].IndexOf(" ", 5);
+                    vehicle.Manufacturer = values[3].Substring(5, secondSpaceIndex - 5); // Extract manufacturer
+                    vehicle.Model = values[3].Substring(secondSpaceIndex + 1); // Copy the rest as plain text
 
                     sale.Vehicle = vehicle;
 

@@ -24,6 +24,18 @@
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\dealership.data\dealership.data.csproj" />
+    <ProjectReference Include="..\dealership.interfaces\dealership.interfaces.csproj" />
+    <ProjectReference Include="..\dealership.model\dealership.model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="sales-example.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">

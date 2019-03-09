@@ -22,5 +22,13 @@ namespace dealership.data.test
             Assert.AreEqual(null, ParseUtils.ParseDateTimeFromWithQuotes(string.Empty));
             Assert.AreEqual(new DateTime(2018, 6, 19), ParseUtils.ParseDateTimeFromWithQuotes("6/19/2018"));
         }
+
+        [Test]
+        public void RemoveStringOuterQuotesTest()
+        {
+            Assert.AreEqual(string.Empty, ParseUtils.RemoveOuterQuotesFromString(null));
+            Assert.AreEqual(string.Empty, ParseUtils.RemoveOuterQuotesFromString(string.Empty));
+            Assert.AreEqual("StringWithoutQuotes", ParseUtils.RemoveOuterQuotesFromString("\"StringWithoutQuotes\""));
+        }
     }
 }

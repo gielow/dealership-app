@@ -5,7 +5,7 @@ using System;
 
 namespace dealership.data.test
 {
-    public class VehicleRespositoryTests
+    public class SalesRespositoryTests
     {
         private const string _cvsFileName = "dealertrack-example.csv";
         private SalesRepository _repository;
@@ -47,9 +47,20 @@ namespace dealership.data.test
             Assert.AreEqual("Sun of Saskatoon", sale.DealershipName);
             Assert.IsNotNull(sale.Vehicle);
             Assert.AreEqual(2017, sale.Vehicle.Year);
-            Assert.AreEqual("Ferrari 488 Spider", sale.Vehicle.Model);
+            Assert.AreEqual("Ferrari", sale.Vehicle.Manufacturer);
+            Assert.AreEqual("488 Spider", sale.Vehicle.Model);
             Assert.AreEqual(429987, sale.Price);
             Assert.AreEqual(new DateTime(2018, 6, 19), sale.Date.HasValue ? sale.Date.Value : DateTime.MinValue);
+        }
+
+        [Test]
+        public void SpecialCharactersTest()
+        {
+            var sale = _repository.GetById(5545);
+
+            Assert.IsNotNull(sale);
+
+            Assert.AreEqual("Élie Boutroux", sale.CustomerName);
         }
     }
 }
