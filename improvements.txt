@@ -4,4 +4,7 @@
 	public decimal Price { get; set; }
 *	Customs parse would be a case apart but for most of it would be supported
 
-2. The CSV file is passed during startup. A configuration or abstraction would be nicer
+2. The CSV file is passed during startup. A configuration or abstraction would be nicer, 
+maybe providing a configuration/CSV file provider or path.
+
+3. Host a RESTful API and add it's address to the main.ts that can be injected and used in every component.
