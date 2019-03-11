@@ -8,3 +8,5 @@
 maybe providing a configuration/CSV file provider or path.
 
 3. Host a RESTful API and add it's address to the main.ts that can be injected and used in every component.
+
+4. Add front-end tests to the angular application
