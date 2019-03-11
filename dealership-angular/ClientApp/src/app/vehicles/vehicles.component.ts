@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-vehicles',
@@ -17,6 +18,7 @@ export class VehicleComponent {
 
 interface VehicleReport {
   vehicle: Vehicle;
+  salesAmount: CurrencyPipe;
   count: number;
 }
 

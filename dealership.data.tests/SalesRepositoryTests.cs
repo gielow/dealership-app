@@ -5,7 +5,7 @@ using System;
 
 namespace dealership.data.test
 {
-    public class SalesRespositoryTests
+    public class SalesRepositoryTests
     {
         private const string _cvsFileName = "dealertrack-example.csv";
         private SalesRepository _repository;
@@ -29,7 +29,7 @@ namespace dealership.data.test
         }
 
         [Test]
-        public void LoadDoesNotThrowAndNotBullTest()
+        public void LoadDoesNotThrowAndNotNullTest()
         {
             Assert.DoesNotThrow(() => _repository.GetAll());
             Assert.IsNotNull(_repository.GetAll());
